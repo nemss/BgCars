@@ -22,14 +22,10 @@
   <ItemGroup>
     <ProjectReference Include="..\BgCars.Common\BgCars.Common.csproj" />
     <ProjectReference Include="..\BgCars.Data\BgCars.Data.csproj" />
+    <ProjectReference Include="..\BgCars.Services\BgCars.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\" />
-    <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\" />
     <Folder Include="Areas\Blog\Controllers\" />
     <Folder Include="Areas\Blog\Data\" />
     <Folder Include="Areas\Blog\Models\" />

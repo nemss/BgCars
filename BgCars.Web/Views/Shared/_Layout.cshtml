@@ -31,16 +31,34 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+
+                    @if (User.IsInRole(WebConstants.AdministratorRole))
+                    {
+                        <li><a asp-area="Admin" asp-controller="Users" asp-action="Index">Users</a></li>
+                    }
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
     <div class="container body-content">
+        @if (TempData.ContainsKey(WebConstants.TempDataSuccessMessageKey))
+        {
+            <div class="alert alert-success">
+                @TempData[WebConstants.TempDataSuccessMessageKey]
+            </div>
+        }
+
+        @if (TempData.ContainsKey(WebConstants.TempDataErrorMessageKey))
+        {
+            <div class="alert alert-danger">
+                @TempData[WebConstants.TempDataErrorMessageKey]
+            </div>
+        }
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - BgCars.Web</p>
+            <p>&copy; 2017 - BgCars</p>
         </footer>
     </div>
 
