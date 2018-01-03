@@ -1,6 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font: 10pt Verdana, Arial, sans-serif;
+    color: #fff8dc;
+    overflow-wrap: break-word;
 }
 
 /* Wrapping element */
@@ -33,3 +36,20 @@
         display: none;
     }
 }
+
+.home-jumbotron {
+    margin-top: 50px;
+}
+
+.course-listings .img-responsive {
+    height: 200px !important;
+}
+
+.img-center {
+    margin: 0 auto;
+}
+
+.article-title {
+    
+}
+

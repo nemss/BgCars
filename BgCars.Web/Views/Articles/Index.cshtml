@@ -1,0 +1,50 @@
+﻿@model ArticleListingViewModel
+
+@{
+    ViewData["Title"] = "Car Reviews";
+}
+
+<div class="jumbotron">
+    <h2 class="text-center"><span style="color:green">Car</span> <span style="color:red">Reviews</span></h2>
+</div>
+
+<div class="row">
+    <form asp-area="" asp-controller="Home" asp-action="">
+        <div class="col-md-2 text-center">
+            <button type="submit" class="btn  pull-right"><span class="glyphicon glyphicon-search"></span> Search</button>
+        </div>
+        <div class="col-md-4 pull-right">
+            <input required asp-for="SearchText" class="form-control" placeholder="Search..." />
+        </div>
+    </form>
+</div>
+<br />
+
+<div class="row">
+
+    @foreach (var article in Model.Articles)
+    {
+        <div class="col-sm-4 thumbnail">
+            <div class="text-center">
+                    <h3 class="article-title">@article.Title</h3>
+                        <img src="@article.ThumbnailUrl" class="img-responsive img-center" />
+                        <ul class="list-group">
+                            <li class="list-group-item"><b>Release Date:</b> @article.PublishDate.ToShortDateString()</li>
+                            <li class="list-group-item"><b>Author:</b> @article.Author</li>
+                        </ul>
+                            <a class="btn btn-success" asp-controller="Articles" asp-action="Details" asp-route-id="@article.Id">Details</a>
+                    </div>
+                </div>
+    }
+</div>
+@if (Model.TotalArticles > Model.Articles.Count())
+{
+    <ul class="pagination">
+        <li class="page-item "><a class="page-link btn" asp-route-page="@Model.PreviousPage">Previous</a></li>
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(Model.CurrentPage == i ? "active" : string.Empty) "><a class="page-link btn" asp-route-page="@i">@i</a></li>
+        }
+        <li class="page-item"><a class="page-link btn" asp-route-page="@Model.NextPage">Next</a></li>
+    </ul>
+}
