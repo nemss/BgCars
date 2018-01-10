@@ -2,8 +2,9 @@
     padding-top: 50px;
     padding-bottom: 20px;
     font: 10pt Verdana, Arial, sans-serif;
-    color: #fff8dc;
-    overflow-wrap: break-word;
+    background-image: url('../images/pexels-photo-57645.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* Wrapping element */
@@ -38,18 +39,27 @@
 }
 
 .home-jumbotron {
-    margin-top: 50px;
-}
-
-.course-listings .img-responsive {
-    height: 200px !important;
+    margin-top: 11px;
+    margin-bottom: 26px;
+    color: #fff;
+    background: linear-gradient(to bottom, #646464 0%,#0e0e0e 100%);
 }
 
 .img-center {
     margin: 0 auto;
 }
 
-.article-title {
-    
+.home-jumbotron-text {
+    text-align: center;
+    color: #646464;
 }
 
+.form-default {
+    color: black;
+    background: linear-gradient(to bottom, #ffffff 0%, #b0e0e6 100%);
+}
+
+.btn-default {
+    color: black;
+    text-align: center;
+}

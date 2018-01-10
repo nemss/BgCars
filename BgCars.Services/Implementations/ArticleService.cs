@@ -29,5 +29,24 @@
 
         public async Task<int> TotalAsync()
             => await this.db.Articles.CountAsync();
+
+        public async Task<IEnumerable<ArticlesListingServiceModel>> FindAsync(string searchText)
+        {
+            searchText = searchText ?? string.Empty;
+
+            return await this.db
+                .Articles
+                .OrderByDescending(c => c.Id)
+                .Where(c => c.Title.ToLower().Contains(searchText.ToLower()))
+                .ProjectTo<ArticlesListingServiceModel>()
+                .ToListAsync();
+        }
+
+        public async Task<ArticlesListingServiceModel> ById(int id)
+            => await this.db
+                .Articles
+                .Where(a => a.Id == id)
+                .ProjectTo<ArticlesListingServiceModel>()
+                .FirstOrDefaultAsync();
     }
 }

@@ -1,11 +1,11 @@
 ﻿namespace BgCars.Web.Controllers
 {
-    using System.Threading.Tasks;
     using Data.Models;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Models.Articles;
     using Services.Interfaces;
+    using System.Threading.Tasks;
 
     public class ArticlesController : Controller
     {
@@ -27,5 +27,18 @@
                 TotalArticles = await this.articles.TotalAsync(),
                 CurrentPage = page
             });
+
+        //GET: /articles/details
+        public async Task<IActionResult> Details(int id)
+        {
+            var articleFindById = await this.articles.ById(id);
+
+            if (articleFindById == null)
+            {
+                return NotFound();
+            }
+
+            return this.View(articleFindById);
+        }
     }
 }

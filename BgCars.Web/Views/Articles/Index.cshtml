@@ -4,13 +4,13 @@
     ViewData["Title"] = "Car Reviews";
 }
 
-<div class="jumbotron">
-    <h2 class="text-center"><span style="color:green">Car</span> <span style="color:red">Reviews</span></h2>
+<div class="jumbotron home-jumbotron">
+    <h2 class="home-jumbotron-text">Car Reviews</h2>
 </div>
 
 <div class="row">
-    <form asp-area="" asp-controller="Home" asp-action="">
-        <div class="col-md-2 text-center">
+    <form asp-area="" asp-controller="Home" asp-action="Search">
+        <div class="col-md-2 pull-right">
             <button type="submit" class="btn  pull-right"><span class="glyphicon glyphicon-search"></span> Search</button>
         </div>
         <div class="col-md-4 pull-right">

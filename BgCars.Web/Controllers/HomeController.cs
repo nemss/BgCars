@@ -1,7 +1,7 @@
 ﻿namespace BgCars.Web.Controllers
 {
-    using Models;
     using Microsoft.AspNetCore.Mvc;
+    using Models;
     using System.Diagnostics;
 
     public class HomeController : Controller

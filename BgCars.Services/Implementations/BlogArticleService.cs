@@ -1,10 +1,15 @@
 ﻿namespace BgCars.Services.Implementations
 {
-    using System;
-    using System.Threading.Tasks;
+    using AutoMapper.QueryableExtensions;
     using Data;
     using Data.Models;
     using Interfaces;
+    using Microsoft.EntityFrameworkCore;
+    using Models.Blog;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     public class BlogArticleService : IBlogArticleService
     {
         private readonly BgCarsDbContext db;
@@ -57,5 +62,12 @@
             this.db.Remove(articleById);
             await this.db.SaveChangesAsync();
         }
+
+        public async Task<BlogArticleDetailsServiceModel> ById(int id)
+            => await this.db
+                .Articles
+                .Where(a => a.Id == id)
+                .ProjectTo<BlogArticleDetailsServiceModel>()
+                .FirstOrDefaultAsync();
     }
 }
