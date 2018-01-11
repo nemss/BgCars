@@ -1,0 +1,34 @@
+﻿@model ArticlesListingServiceModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <h3 class="text-center">@ViewData["Title"]</h3>
+        </li>
+        <li class="list-group-item text-center">
+            <img src="@Model.ThumbnailUrl" width="350" height="315" />
+        </li>
+        <li class="list-group-item">
+            <b>Content:</b> @Html.Raw(Model.Content)
+        </li>
+
+        <li class="list-group-item">
+            <b>Publish Date:</b> @Model.PublishDate.ToShortDateString()
+        </li>
+        <li class="list-group-item">
+            <b>Author:</b> @Model.Author
+        </li>
+    </ul>
+    @if (User.IsInRole(WebConstants.BlogAuthorRole))
+    {
+        <div class="text-right">
+            <a asp-area="Blog" asp-controller="Articles" asp-action="Edit" asp-route-id="@Model.Id" class="btn bg-success">Edit</a>
+            <a href="/blog/articles/delete/@Model.Id" class="btn btn-danger">Delete</a>
+        </div>
+    }
+</div>
+

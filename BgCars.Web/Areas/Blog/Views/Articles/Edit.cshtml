@@ -1,0 +1,9 @@
+﻿@model ArticleFormModel
+@{
+    ViewData["Title"] = "Edit Article";
+}
+
+<div class="row">
+    <h2>@ViewData["Title"]</h2>
+    @Html.Partial("_CreateEditPartialView", Model)
+</div>
